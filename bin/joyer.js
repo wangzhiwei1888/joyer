@@ -15,7 +15,7 @@ config.init()
 
 try {
   check.checkPermission()
-} catch(_) {
+} catch (_) {
   logger.fatal(`chalk.yellow('permission denied')
     尝试使用 ${chalk.cyan('sudo')} 或者执行下面指令修改访问权限
 
@@ -30,12 +30,12 @@ if (config.get('updateCheck')) {
 // hack
 // https://gist.github.com/branneman/8048520#6-the-hack
 process.env['NODE_PATH'] = (process.env['NODE_PATH'] || '') + [
-    '',
-    path.join(PATH.CWD_PATH, 'node_modules'),
-    path.join(PATH.ROOT_PATH, 'node_modules'),
-    path.join(PATH.PLUGIN_PATH, 'node_modules'),
-    PATH.LIB_PATH
-  ].join(path.delimiter)
+  '',
+  path.join(PATH.CWD_PATH, 'node_modules'),
+  path.join(PATH.ROOT_PATH, 'node_modules'),
+  path.join(PATH.PLUGIN_PATH, 'node_modules'),
+  PATH.LIB_PATH
+].join(path.delimiter)
 
 require('module').Module._initPaths()
 
@@ -53,21 +53,3 @@ program
 if (!process.argv.slice(2).length) {
   program.outputHelp()
 }
-
-// console.log('you ordered a pizza with:')
-
-// if (program.build) console.log('编译')
-// if (program.deploy) console.log('发布')
-
-// switch (program.start) {
-//   case 'test':
-//     console.log('开发 测试环境');
-//     break;
-//   case 'pro':
-//     console.log('开发 生产环境');
-//     break;
-//   default:
-//     console.log('开发 预发环境[默认环境]');
-// }
-
-// console.log('  - %s cheese', program.cheese)

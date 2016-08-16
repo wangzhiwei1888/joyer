@@ -38,7 +38,9 @@ exports.checkPermission = () => {
 
 /* istanbul ignore next */
 exports.checkVersion = () => {
-  var notifier = updateNotifier({pkg})
+  var notifier = updateNotifier({
+    pkg
+  })
 
   notifier.notify()
   if (notifier.update) {

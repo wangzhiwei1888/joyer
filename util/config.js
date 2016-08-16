@@ -24,7 +24,7 @@ exports.init = () => {
   if (!fs.existsSync(filePath)) {
     const config = {
       template: '',
-      registry: 'http://source.jd.com/app/mdev.jrmui.generator.git',
+      registry: 'http://source.jd.com/app/mdev.jrmui.joyer.git',
       ui: 'http://source.jd.com/app/jrmui.git',
       updateCheck: true,
       github: '',
