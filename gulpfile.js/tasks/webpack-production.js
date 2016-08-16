@@ -1,5 +1,5 @@
 var program = require('commander')
-var config = program.config || require('./../../util/joyer.config')()
+var config = require(program.config || require('../joyer.config')())
 if (!config.tasks.js) return
 
 var config = require('../lib/webpack-multi-config')('production')

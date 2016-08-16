@@ -1,5 +1,5 @@
 var program = require('commander')
-var config = program.config || require('./../../util/joyer.config')()
+var config = require(program.config || require('../joyer.config')())
 var gulp = require('gulp');
 var repeatString = require('../lib/repeatString');
 var sizereport = require('gulp-sizereport');

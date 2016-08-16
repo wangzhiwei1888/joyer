@@ -1,6 +1,6 @@
 var gulp = require('gulp')
 var program = require('commander')
-var config = program.config || require('./../../util/joyer.config')()
+var config = require(program.config || require('./../../joyer.config')())
 var revReplace = require('gulp-rev-replace')
 var path = require('path')
 

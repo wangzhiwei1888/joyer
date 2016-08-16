@@ -1,4 +1,5 @@
-var config = require('./../config');
+var program = require('commander')
+var config = require(program.config || require('./../joyer.config')())
 
 var gulp = require('gulp');
 var zip = require('gulp-zip');

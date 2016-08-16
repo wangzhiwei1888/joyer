@@ -1,6 +1,6 @@
 var compress = require('compression')
 var program = require('commander')
-var config = program.config || require('./../../util/joyer.config')()
+var config = require(program.config || require('../joyer.config')())
 var express = require('express')
 var gulp = require('gulp')
 var gutil = require('gulp-util')

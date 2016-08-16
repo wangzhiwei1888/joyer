@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var del = require('del');
 var program = require('commander')
-var config = program.config || require('./../../util/joyer.config')()
+var config = require(program.config || require('../joyer.config')())
 var path = require('path');
 
 gulp.task('clean', function(cb) {

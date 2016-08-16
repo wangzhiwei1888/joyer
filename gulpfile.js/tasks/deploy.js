@@ -1,5 +1,5 @@
 var program = require('commander')
-var config = program.config || require('./../../util/joyer.config')()
+var config = require(program.config || require('../joyer.config')())
 var ghPages = require('gulp-gh-pages')
 var gulp = require('gulp')
 var open = require('open')

@@ -1,5 +1,5 @@
 var program = require('commander')
-var config = program.config || require('./../../util/joyer.config')()
+var config = require(program.config || require('../joyer.config')())
 if (!config.tasks.images) return
 
 var browserSync = require('browser-sync')

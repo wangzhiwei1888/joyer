@@ -9,14 +9,13 @@ const CWD_PATH = require('../util/path').CWD_PATH
 const shelljs = require('shelljs')
 const path = require('path');
 
-logger.log(path.join(CWD_PATH))
-  // logger.log(path.join(CWD_PATH, 'joyer.config.json'))
-shelljs.cd(CWD_PATH);
+// logger.log(path.join(CWD_PATH))
+// logger.log(path.join(CWD_PATH, 'joyer.config.json'))
 
-exec('gulp', ['production'], {
+exec('gulp', ['build:production', '--cwd', CWD_PATH], {
   stdio: 'inherit'
 });
 
-exec('gulp', ['zip'], {
-  stdio: 'inherit'
-});
+// exec('gulp', ['zip', CWD_PATH], {
+//   stdio: 'inherit'
+// });

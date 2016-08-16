@@ -1,7 +1,6 @@
 var program = require('commander')
-var config = require(program.config || require('./../../util/joyer.config')())
+var config = require(program.config || require('./../joyer.config')())
 
-console.log(config);
 if (!config.tasks.css) return;
 
 var process = require('process');
