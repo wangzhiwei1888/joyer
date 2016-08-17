@@ -24,8 +24,9 @@ exports.init = () => {
   if (!fs.existsSync(filePath)) {
     const config = {
       template: '',
-      registry: 'https://github.com/nowgoant/gulp-starter-generator.git',
-      // ui: 'http://source.jd.com/app/jrmui.git',
+      // registry: 'https://github.com/nowgoant/gulp-starter-generator.git',
+      registry: 'http://source.jd.com/app/mdev.jrmui.generator.git',
+      ui: 'http://source.jd.com/app/jrmui.git',
       updateCheck: true,
       github: '',
       author: ''

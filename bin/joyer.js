@@ -45,8 +45,9 @@ program
   .version(pkg.version)
   .command('config <option>', '查看当前项目的配置信息')
   .command('init', '初始化一个空项目')
-  .command('build', '编译')
-  .command('deploy', '发布')
+  .command('build <env>', '编译,NODE_ENV设置process.env.NODE_ENV的值')
+  .command('dev <env>', '开发,NODE_ENV设置process.env.NODE_ENV的值')
+  .command('deploy <env>', '发布,NODE_ENV设置process.env.NODE_ENV的值')
   .parse(process.argv);
 
 

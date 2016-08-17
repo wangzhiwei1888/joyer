@@ -16,6 +16,6 @@ if (!projectName) {
 
 shelljs.mkdir(projectName)
 shelljs.cd(projectName)
-exec('cooking', ['init', template], {
+exec('joyer', ['init', template], {
   stdio: 'inherit',
 })
