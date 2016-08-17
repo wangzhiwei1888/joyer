@@ -25,7 +25,7 @@ module.exports.init = () => {
     const config = {
       template: '',
       // registry: 'https://github.com/nowgoant/gulp-starter-generator.git',
-      registry: 'http://source.jd.com/app/mdev.jrmui.generator.git',
+      registry: 'http://source.jd.com/app/mdev.jrmui.joyer.git',
       ui: 'http://source.jd.com/app/jrmui.git',
       updateCheck: true,
       github: '',
