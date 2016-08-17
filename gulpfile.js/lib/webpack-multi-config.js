@@ -7,10 +7,11 @@ var webpack = require('webpack')
 var webpackManifest = require('./webpackManifest')
 
 module.exports = function(env) {
-  var jsSrc = path.resolve(process.env.CWD_PATH, config.root.src, config.tasks.js.src)
-  var jsDest = path.resolve(process.env.CWD_PATH, config.root.dest, config.tasks.js.dest)
-  var publicPath = path.join(process.env.CWD_PATH, config.tasks.js.src, '/')
-  var filenamePattern = env === 'production' ? '[name]-[hash].js' : '[name].js'
+  var jsSrc = path.resolve(process.env.CWD_PATH, config.root.src, config.tasks.js.src);
+  var jsDest = path.resolve(process.env.CWD_PATH, config.root.dest, config.tasks.js.dest);
+  var publicPath = path.join(config.tasks.js.src, '/');
+  var rev = config.tasks.production.rev && env === 'production'
+  var filenamePattern = rev ? '[name]-[hash].js' : '[name].js'
   var extensions = config.tasks.js.extensions.map(function(extension) {
     return '.' + extension
   })
@@ -24,8 +25,9 @@ module.exports = function(env) {
     module: {
       loaders: [{
         test: /\.js$/,
-        loader: 'babel-loader?stage=1',
-        exclude: /node_modules/
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: config.tasks.js.babel
       }]
     }
   }
@@ -63,8 +65,10 @@ module.exports = function(env) {
   }
 
   if (env === 'production') {
+    if (rev) {
+      webpackConfig.plugins.push(new webpackManifest(publicPath, path.join(process.env.CWD_PATH, config.root.dest)));
+    }
     webpackConfig.plugins.push(
-      new webpackManifest(publicPath, config.root.dest),
       new webpack.optimize.DedupePlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
@@ -82,4 +86,4 @@ module.exports = function(env) {
   }
 
   return webpackConfig
-}
+};

@@ -1,3 +1,8 @@
+var program = require('commander');
+var config = require(program.config || require('./../../joyer.config')());
+
+if (!config.tasks.production.rev) return;
+
 var gulp = require('gulp');
 var gulpSequence = require('gulp-sequence');
 

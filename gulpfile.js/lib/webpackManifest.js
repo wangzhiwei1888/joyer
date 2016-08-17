@@ -12,11 +12,11 @@ module.exports = function(publicPath, dest, filename) {
 
       for (var key in chunks) {
         var originalFilename = key + '.js';
-        manifest[path.join(process.env.CWD_PATH, publicPath, originalFilename)] = path.join(process.env.CWD_PATH, publicPath, chunks[key]);
+        manifest[path.join(publicPath, originalFilename)] = path.join(publicPath, chunks[key]);
       }
 
       fs.writeFileSync(
-        path.join(process.env.CWD_PATH, dest, filename),
+        path.join(dest, filename),
         JSON.stringify(manifest)
       );
     });

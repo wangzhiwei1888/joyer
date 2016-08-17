@@ -19,13 +19,13 @@ gulp.task('watch', ['browserSync'], function() {
   });
 
   var jrmuiSrc = path.join(process.env.CWD_PATH, config.jrmui.src);
-  var jrmuiStatics = path.join(process.env.CWD_PATH, config.jrmui.statics);
+  var jrmuiStatics = config.jrmui.statics;
 
   jrmuiStatics.forEach(function(item) {
-    var filePattern = path.join(jrmuiSrc, item.src, '**/*.{' + item.extensions.join(',') + '}');
+    var glob = path.join(jrmuiSrc, item.src, '**/*.{' + item.extensions.join(',') + '}');
     // console.log(filePattern);
-    watch(filePattern, function() {
-      gulp.start(item.tasks);
+    watch(glob, function() {
+      require('./' + item.tasks)();
     });
   });
 });
