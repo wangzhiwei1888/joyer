@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-'use strict'
-
 const exec = require('../util/exec');
 const CWD_PATH = require('../util/path').CWD_PATH;
+
+'use strict';
 
 require('./joyer-build');
 

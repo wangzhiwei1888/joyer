@@ -1,11 +1,9 @@
-'use strict'
-
 module.exports = name => {
   try {
-    require.resolve(name)
+    require.resolve(name);
 
-    return true
+    return true;
   } catch (_) {
-    return false
+    return false;
   }
-}
+};

@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 
-'use strict'
+const program = require('commander');
+const exec = require('../util/exec');
+const logger = require('../util/logger');
+const config = require('../util/config');
+const shelljs = require('shelljs');
+const fs = require('fs');
 
-const path = require('path')
-const program = require('commander')
-const exec = require('../util/exec')
-const logger = require('../util/logger')
-const isInstalled = require('../util/is-installed')
-const config = require('../util/config')
-const shelljs = require('shelljs')
-const fs = require('fs')
+'use strict';
 
 program
   .option('-r --registry <registry-url>', '指定镜像')
@@ -22,16 +20,16 @@ program.registry = program.registry || config.get('registry');
 
 
 if (!projectName) {
-  logger.fatal('必须输入项目名称')
+  logger.fatal('必须输入项目名称');
 }
 
 if (!fs.existsSync(projectName)) {
-  shelljs.mkdir(projectName)
-  logger.log('mkdir ', projectName)
+  shelljs.mkdir(projectName);
+  logger.log('mkdir ', projectName);
 }
 
 if (!program.registry) {
-  logger.fatal('请指定脚手架')
+  logger.fatal('请指定脚手架');
 }
 
 const installTemplate = () => {
@@ -66,8 +64,8 @@ const installTemplate = () => {
       stdio: 'inherit'
     });
 
-    logger.success('安装成功\n')
+    logger.success('安装成功\n');
   }
-}
+};
 
 installTemplate();

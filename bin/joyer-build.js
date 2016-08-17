@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-'use strict'
-
-const logger = require('../util/logger')
+const logger = require('../util/logger');
 const program = require('commander').parse(process.argv);
 const exec = require('../util/exec');
 const CWD_PATH = require('../util/path').CWD_PATH;
 const tasks = ['build:production'];
+
+'use strict';
 
 //set env
 if (!process.env.NODE_ENV) {

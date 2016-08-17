@@ -1,21 +1,21 @@
-'use strict'
+const spawnSync = require('cross-spawn').sync;
+const logger = require('./logger');
 
-const spawnSync = require('cross-spawn').sync
-const logger = require('./logger')
+'use strict';
 
 /* istanbul ignore next */
 module.exports = (cmd, args, opts) => {
-  opts = opts || {}
+  opts = opts || {};
 
-  const errMessage = opts.errorMessage
-  const command = spawnSync(cmd, args || [], opts)
+  const errMessage = opts.errorMessage;
+  const command = spawnSync(cmd, args || [], opts);
 
   if (command.status === 1) {
     if (command.stderr) {
-      logger.fatal(errMessage || command.stderr.toString())
+      logger.fatal(errMessage || command.stderr.toString());
     }
-    process.exit(1)
+    process.exit(1);
   }
 
-  return command
-}
+  return command;
+};

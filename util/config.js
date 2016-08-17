@@ -1,26 +1,26 @@
-'use strict'
+const path = require('path');
+const fs = require('fs');
+const PLUGIN_PATH = require('./path').PLUGIN_PATH;
 
-const path = require('path')
-const fs = require('fs')
-const PLUGIN_PATH = require('./path').PLUGIN_PATH
+const filename = 'config.json';
+const filePath = path.join(PLUGIN_PATH, filename);
 
-const filename = 'config.json'
-const filePath = path.join(PLUGIN_PATH, filename)
+'use strict';
 
 const formatBoolean = value => {
   if (value === 'true') {
-    return true
+    return true;
   } else if (value === 'false') {
-    return false
+    return false;
   }
 
-  return value
-}
+  return value;
+};
 const requireFile = () => {
-  return require(filePath)
-}
+  return require(filePath);
+};
 
-exports.init = () => {
+module.exports.init = () => {
   if (!fs.existsSync(filePath)) {
     const config = {
       template: '',
@@ -30,29 +30,29 @@ exports.init = () => {
       updateCheck: true,
       github: '',
       author: ''
-    }
+    };
 
-    fs.writeFileSync(filePath, JSON.stringify(config, null, 2))
+    fs.writeFileSync(filePath, JSON.stringify(config, null, 2));
   }
-}
+};
 
-exports.get = option => {
+module.exports.get = option => {
   if (!option) {
-    return requireFile()
+    return requireFile();
   }
 
-  return requireFile()[option]
-}
+  return requireFile()[option];
+};
 
-exports.set = (option, value) => {
-  const config = requireFile()
+module.exports.set = (option, value) => {
+  const config = requireFile();
 
   if (config[option] !== undefined) {
-    config[option] = formatBoolean(value)
-    fs.writeFileSync(filePath, JSON.stringify(config, null, 2))
+    config[option] = formatBoolean(value);
+    fs.writeFileSync(filePath, JSON.stringify(config, null, 2));
 
-    return true
+    return true;
   }
 
-  return false
-}
+  return false;
+};
