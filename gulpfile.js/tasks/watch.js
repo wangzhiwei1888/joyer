@@ -1,25 +1,25 @@
-var program = require('commander')
-var config = require(program.config || require('../joyer.config')())
-var gulp = require('gulp')
-var path = require('path')
-var watch = require('gulp-watch')
+var program = require('commander');
+var config = require(program.config || require('../joyer.config')());
+var gulp = require('gulp');
+var path = require('path');
+var watch = require('gulp-watch');
 
 gulp.task('watch', ['browserSync'], function() {
-  var watchableTasks = ['fonts', 'iconFont', 'images', 'svgSprite', 'html', 'css']
+  var watchableTasks = ['fonts', 'iconFont', 'images', 'svgSprite', 'html', 'css'];
 
   watchableTasks.forEach(function(taskName) {
-    var task = config.tasks[taskName]
+    var task = config.tasks[taskName];
     if (task) {
-      var filePattern = path.join(config.root.src, task.src, '**/*.{' + task.extensions.join(',') + '}')
-        // console.log(filePattern);
+      var filePattern = path.join(process.env.CWD_PATH, config.root.src, task.src, '**/*.{' + task.extensions.join(',') + '}');
+      // console.log(filePattern);
       watch(filePattern, function() {
-        gulp.start(taskName)
-      })
+        gulp.start(taskName);
+      });
     }
   });
 
-  var jrmuiSrc = config.jrmui.src;
-  var jrmuiStatics = config.jrmui.statics;
+  var jrmuiSrc = path.join(process.env.CWD_PATH, config.jrmui.src);
+  var jrmuiStatics = path.join(process.env.CWD_PATH, config.jrmui.statics);
 
   jrmuiStatics.forEach(function(item) {
     var filePattern = path.join(jrmuiSrc, item.src, '**/*.{' + item.extensions.join(',') + '}');

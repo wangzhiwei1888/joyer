@@ -15,17 +15,17 @@ var fs = require('fs')
 var exclude = path.normalize('!**/{' + config.tasks.html.excludeFolders.join(',') + '}/**')
 
 var paths = {
-  src: [path.join(config.root.src, config.tasks.html.src, '/**/*.html'), exclude],
-  dest: path.join(config.root.dest, config.tasks.html.dest),
+  src: [path.join(process.env.CWD_PATH, config.root.src, config.tasks.html.src, '/**/*.html'), exclude],
+  dest: path.join(process.env.CWD_PATH, config.root.dest, config.tasks.html.dest),
 }
 
 var getData = function(file) {
-  var dataPath = path.resolve(config.root.src, config.tasks.html.src, config.tasks.html.dataFile)
+  var dataPath = path.resolve(process.env.CWD_PATH, config.root.src, config.tasks.html.src, config.tasks.html.dataFile)
   return JSON.parse(fs.readFileSync(dataPath, 'utf8'))
 }
 
 gulp.task('html', function() {
-  render.nunjucks.configure([path.join(config.root.src, config.tasks.html.src)], {
+  render.nunjucks.configure([path.join(process.env.CWD_PATH, config.root.src, config.tasks.html.src)], {
     watch: false
   })
 

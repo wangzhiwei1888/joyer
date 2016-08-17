@@ -9,8 +9,8 @@ var imagemin = require('gulp-imagemin')
 var path = require('path')
 
 var paths = {
-  src: path.join(config.root.src, config.tasks.images.src, '/**'),
-  dest: path.join(config.root.dest, config.tasks.images.dest)
+  src: path.join(process.env.CWD_PATH, config.root.src, config.tasks.images.src, '/**'),
+  dest: path.join(process.env.CWD_PATH, config.root.dest, config.tasks.images.dest)
 }
 
 gulp.task('images', function() {

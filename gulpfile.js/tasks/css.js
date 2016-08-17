@@ -12,17 +12,19 @@ var handleErrors = require('../lib/handleErrors');
 var path = require('path');
 
 var paths = {
-  src: path.join(config.root.src, config.tasks.css.src, '/**/*.{' + config.tasks.css.extensions + '}'),
-  dest: path.join(config.root.dest, config.tasks.css.dest)
+  src: path.join(process.env.CWD_PATH, config.root.src, config.tasks.css.src, '/**/*.{' + config.tasks.css.extensions + '}'),
+  dest: path.join(process.env.CWD_PATH, config.root.dest, config.tasks.css.dest)
 };
+
+// console.log('sass', paths.src)
 
 var compassConfig = {
   // config_file: './config.rb',
   // environment: 'development'
   // sourcemap: true
-  sass: path.join(config.root.src, config.tasks.css.src),
-  image: path.join(config.root.src, 'images'),
-  css: path.join(config.root.src, '.styles'),
+  sass: path.join(process.env.CWD_PATH, config.root.src, config.tasks.css.src),
+  image: path.join(process.env.CWD_PATH, config.root.src, 'images'),
+  css: path.join(process.env.CWD_PATH, config.root.src, '.styles'),
   require: ['compass/import-once/activate'],
 };
 

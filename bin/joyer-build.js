@@ -3,7 +3,9 @@
 const logger = require('../util/logger');
 const program = require('commander').parse(process.argv);
 const exec = require('../util/exec');
-const CWD_PATH = require('../util/path').CWD_PATH;
+const UTILPATH = require('../util/path');
+const ROOT_PATH = UTILPATH.ROOT_PATH;
+const CWD_PATH = UTILPATH.CWD_PATH;
 const tasks = ['build:production'];
 
 'use strict';
@@ -18,8 +20,11 @@ if (process.env.NODE_ENV !== 'production') {
   tasks.push('zip');
 }
 
+//set CWD_PATH
+process.env.CWD_PATH = CWD_PATH;
+
 tasks.forEach(function(task) {
-  exec('gulp', [task, '--cwd', CWD_PATH], {
+  exec('gulp', [task, '--cwd', ROOT_PATH], {
     stdio: 'inherit'
   });
 });

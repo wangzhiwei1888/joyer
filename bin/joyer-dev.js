@@ -3,7 +3,9 @@
 const logger = require('../util/logger');
 const program = require('commander').parse(process.argv);
 const exec = require('../util/exec');
-const CWD_PATH = require('../util/path').CWD_PATH;
+const UTILPATH = require('../util/path');
+const ROOT_PATH = UTILPATH.ROOT_PATH;
+const CWD_PATH = UTILPATH.CWD_PATH;
 
 'use strict';
 
@@ -11,8 +13,11 @@ const CWD_PATH = require('../util/path').CWD_PATH;
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = program.args[0] || 'development';
 }
+
 logger.log('环境变量process.env.NODE_ENV:', process.env.NODE_ENV);
 
-exec('gulp', ['--cwd', CWD_PATH], {
+process.env.CWD_PATH = CWD_PATH;
+
+exec('gulp', ['--cwd', ROOT_PATH], {
   stdio: 'inherit'
 });

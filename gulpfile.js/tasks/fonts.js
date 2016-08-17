@@ -8,8 +8,8 @@ var gulp = require('gulp')
 var path = require('path')
 
 var paths = {
-  src: path.join(config.root.src, config.tasks.fonts.src, '/**/*'),
-  dest: path.join(config.root.dest, config.tasks.fonts.dest)
+  src: path.join(process.env.CWD_PATH, config.root.src, config.tasks.fonts.src, '/**/*'),
+  dest: path.join(process.env.CWD_PATH, config.root.dest, config.tasks.fonts.dest)
 }
 
 gulp.task('fonts', function() {

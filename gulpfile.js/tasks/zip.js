@@ -1,5 +1,5 @@
-var program = require('commander')
-var config = require(program.config || require('./../joyer.config')())
+var program = require('commander');
+var config = require(program.config || require('./../joyer.config')());
 
 var gulp = require('gulp');
 var zip = require('gulp-zip');
@@ -11,7 +11,7 @@ var name = config.root.dest.replace(dirname, '').replace('/', '') + '.zip';
 // console.log(dirname);
 // console.log(name);
 gulp.task('zip', function() {
-  return gulp.src(path.join(config.root.dest, '/**/*'))
+  return gulp.src(path.join(process.env.CWD_PATH, config.root.dest, '/**/*'))
     .pipe(zip(name))
-    .pipe(gulp.dest(config.root.dest));
+    .pipe(gulp.dest(path.join(process.env.CWD_PATH, config.root.dest)));
 });
