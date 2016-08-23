@@ -1,0 +1,11 @@
+node_modules
+.tmp
+.sass-cache
+bower_components
+npm-debug.log
+h5
+.idea
+.psd
+.vscode
+dist
+myapp
