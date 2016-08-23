@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nowgoant/node-commander.git"
+    "url": "git+https://github.com/nowgoant/joyer.git"
   },
   "keywords": [
     "node",
@@ -23,9 +23,9 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nowgoant/node-commander/issues"
+    "url": "https://github.com/nowgoant/joyer/issues"
   },
-  "homepage": "https://github.com/nowgoant/node-commander#readme",
+  "homepage": "https://github.com/nowgoant/joyer#readme",
   "dependencies": {
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.5",
