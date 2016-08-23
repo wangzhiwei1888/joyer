@@ -20,6 +20,7 @@
  `cd myapp`
  
  `joyer dev`
+ 
  启动服务在[http://localhost:3000/demo/index.html](http://localhost:3000/demo/index.html)
  
 ### 编译
