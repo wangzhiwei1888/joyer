@@ -10,7 +10,7 @@ module.exports = function(env) {
   var jsSrc = path.resolve(process.env.CWD_PATH, config.root.src, config.tasks.js.src);
   var jsDest = path.resolve(process.env.CWD_PATH, config.root.dest, config.tasks.js.dest);
   var publicPath = path.join(config.tasks.js.src, '/');
-  var rev = config.tasks.production.rev && env === 'production';  
+  var rev = config.tasks.production.rev && env === 'production';
   var filenamePattern = rev ? '[name]-[hash].js' : '[name].js'
   var extensions = config.tasks.js.extensions.map(function(extension) {
     return '.' + extension
@@ -21,7 +21,7 @@ module.exports = function(env) {
     plugins: [],
     resolve: {
       // root: [jsSrc],
-      alias:{
+      alias: {
         src: jsSrc
       },
       extensions: [''].concat(extensions)
@@ -33,11 +33,14 @@ module.exports = function(env) {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: config.tasks.js.babel
+      }, {
+        test: /\.html$/,
+        loader: "html"
       }]
     }
   };
 
-    // install resolve path
+  // install resolve path
   require('./load-resolve-path')(webpackConfig);
 
   // console.log(webpackConfig);

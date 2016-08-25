@@ -65,6 +65,7 @@
     "gulp-util": "^3.0.6",
     "gulp-watch": "^4.3.3",
     "gulp-zip": "^3.2.0",
+    "html-loader": "^0.4.3",
     "lodash": "^3.10.0",
     "merge-stream": "^0.1.8",
     "morgan": "^1.6.1",
