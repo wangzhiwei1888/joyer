@@ -37,7 +37,8 @@ module.exports = function(env) {
         test: /\.html$/,
         loader: "html"
       }]
-    }
+    },
+    htmlLoader: config.tasks.js.htmlLoader
   };
 
   // install resolve path
