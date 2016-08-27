@@ -49,6 +49,7 @@ program
   .command('build <env>', '编译,NODE_ENV设置process.env.NODE_ENV的值')
   .command('dev <env>', '开发,NODE_ENV设置process.env.NODE_ENV的值')
   .command('deploy <env>', '发布,NODE_ENV设置process.env.NODE_ENV的值')
+  .command('doc', '打开开发文档')
   .parse(process.argv);
 
 
