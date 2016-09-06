@@ -26,8 +26,8 @@ module.exports.init = () => {
       template: '',
       // registry: 'https://github.com/nowgoant/joyer-generator.git',
       registry: {
-        default:'http://source.jd.com/app/mdev.jrmui.joyer.git',
-        bt:'http://source.jd.com/app/mdev.jrmui.joyer.bt.git',
+        default: 'http://source.jd.com/app/mdev.jrmui.joyer.git',
+        bt: 'http://source.jd.com/app/mdev.jrmui.joyer.bt.git',
       },
       ui: 'http://source.jd.com/app/jrmui.git',
       updateCheck: true,

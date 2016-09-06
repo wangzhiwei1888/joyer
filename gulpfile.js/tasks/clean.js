@@ -6,15 +6,15 @@ var path = require('path');
 
 gulp.task('clean', function(cb) {
   var files = [path.join(process.env.CWD_PATH, config.root.dest)];
- 
-  files.push(path.join(process.cwd(),'.sass-cache'));
-  
+
+  if (config.tasks.css && config.tasks.css.sasscache === false) {
+    files.push(path.join(process.cwd(), '.sass-cache'));
+  }
   // console.log('files', files);
 
-  del(files,{
-  	force:true
+  del(files, {
+    force: true
   }).then(function() {
     cb();
   });
-
 });
