@@ -10,7 +10,12 @@ gulp.task('clean', function(cb) {
   if (config.tasks.css && config.tasks.css.sasscache === false) {
     files.push(path.join(process.cwd(), '.sass-cache'));
   }
-  // console.log('files', files);
+
+  if (process.env.NODE_ENV === 'production') {
+    files.push(path.join(process.env.CWD_PATH, config.root.src, '.styles'));
+  }
+
+  console.log('files', files);
 
   del(files, {
     force: true
