@@ -20,10 +20,11 @@ if (process.env.NODE_ENV !== 'production') {
   tasks.push('zip');
 }
 
+process.env.NODE_COMMAND = 'build';
 //set CWD_PATH
 process.env.CWD_PATH = CWD_PATH;
 
-tasks.forEach(function(task) {
+tasks.forEach(function (task) {
   exec('gulp', [task, '--cwd', ROOT_PATH], {
     stdio: 'inherit'
   });
