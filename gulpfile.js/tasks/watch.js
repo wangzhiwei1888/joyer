@@ -4,15 +4,15 @@ var gulp = require('gulp');
 var path = require('path');
 var watch = require('gulp-watch');
 
-gulp.task('watch', ['browserSync'], function() {
+gulp.task('watch', ['browserSync'], function () {
   var watchableTasks = ['fonts', 'iconFont', 'images', 'svgSprite', 'html', 'css'];
 
-  watchableTasks.forEach(function(taskName) {
+  watchableTasks.forEach(function (taskName) {
     var task = config.tasks[taskName];
     if (task) {
       var filePattern = path.join(process.env.CWD_PATH, config.root.src, task.src, '**/*.{' + task.extensions.join(',') + '}');
       // console.log(filePattern);
-      watch(filePattern, function() {
+      watch(filePattern, function () {
         gulp.start(taskName);
       });
     }
@@ -21,11 +21,11 @@ gulp.task('watch', ['browserSync'], function() {
   var jrmuiSrc = path.join(process.env.CWD_PATH, config.jrmui.src);
   var jrmuiStatics = config.jrmui.statics;
 
-  jrmuiStatics.forEach(function(item) {
+  jrmuiStatics.forEach(function (item) {
     var glob = path.join(jrmuiSrc, item.src, '**/*.{' + item.extensions.join(',') + '}');
-    // console.log(filePattern);
-    watch(glob, function() {
-      require('./' + item.tasks)();
+    // console.log('jrmuiStatics:', glob);
+    watch(glob, function () {
+      gulp.start(item.tasks);
     });
   });
 });
