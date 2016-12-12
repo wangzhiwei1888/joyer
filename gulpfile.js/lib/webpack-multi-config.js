@@ -5,6 +5,7 @@ if (!config.tasks.js) return
 var path = require('path')
 var webpack = require('webpack')
 var webpackManifest = require('./webpackManifest')
+  // var utils = require('./utils')
 
 module.exports = function(env) {
   var jsSrc = path.resolve(process.env.CWD_PATH, config.root.src, config.tasks.js.src);
@@ -35,7 +36,14 @@ module.exports = function(env) {
         query: config.tasks.js.babel
       }, {
         test: /\.html$/,
-        loader: "html"
+        loader: 'html'
+      }, {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url',
+        // query: {
+        // limit: 10000,
+        // name: utils.assetsPath('[name].[hash:7].[ext]')
+        // }
       }]
     },
     htmlLoader: config.tasks.js.htmlLoader
