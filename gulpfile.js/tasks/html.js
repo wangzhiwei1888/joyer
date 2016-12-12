@@ -25,13 +25,13 @@ var getData = function(file) {
 }
 
 gulp.task('html', function() {
-  render.nunjucks.configure([path.join(process.env.CWD_PATH, config.root.src, config.tasks.html.src)], {
-    watch: false
-  })
 
   return gulp.src(paths.src)
     .pipe(data(getData))
-    .pipe(render())
+    .pipe(render({
+      path: [path.join(process.env.CWD_PATH, config.root.src, config.tasks.html.src)],
+      watch: false,
+    }))
     .on('error', handleErrors)
     .pipe(gulpif(process.env.NODE_ENV == 'production', htmlmin(config.tasks.html.htmlmin)))
     .pipe(gulp.dest(paths.dest))
