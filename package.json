@@ -1,6 +1,6 @@
 {
   "name": "joyer",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "joyer",
   "main": "index.js",
   "scripts": {
@@ -51,7 +51,7 @@
     "gulp-if": "~1.2.5",
     "gulp-imagemin": "^2.3.0",
     "gulp-notify": "^2.2.0",
-    "gulp-nunjucks-render": "^0.2.1",
+    "gulp-nunjucks-render": "^2.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^7.0.0",
     "gulp-rev-napkin": "^0.1.0",
