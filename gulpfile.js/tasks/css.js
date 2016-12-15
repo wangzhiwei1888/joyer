@@ -10,6 +10,8 @@ var browserSync = require('browser-sync');
 var compass = require('gulp-compass');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
+var postcss = require('gulp-postcss');
+var assets = require('postcss-assets');
 var autoprefixer = require('gulp-autoprefixer');
 var handleErrors = require('../lib/handleErrors');
 var path = require('path');
@@ -44,7 +46,6 @@ if (config.compass !== false) {
       .pipe(sourcemaps.init())
       .pipe(compass(compassConfig))
       .on('error', handleErrors)
-      // .pipe(autoprefixer(config.tasks.css.autoprefixer))
       .pipe(sourcemaps.write())
       .pipe(gulp.dest(paths.dest))
       .pipe(browserSync.reload({
@@ -53,10 +54,18 @@ if (config.compass !== false) {
   });
 } else {
   gulp.task('css', function() {
+    var processors = [
+      assets({
+        cachebuster: true,
+        relative: true
+      })
+    ];
+
     return gulp.src(paths.src)
       .pipe(gulpif(!global.production, sourcemaps.init()))
       .pipe(sass(config.tasks.css.sass))
       .on('error', handleErrors)
+      .pipe(postcss(processors))
       .pipe(autoprefixer(config.tasks.css.autoprefixer))
       .pipe(gulpif(global.production, cssnano({
         autoprefixer: false
