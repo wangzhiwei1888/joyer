@@ -65,14 +65,16 @@ const installTemplate = (template) => {
     logger.success('clone成功\n');
 
     logger.log('dir:' + path.join(jrmuiPath, 'src'));
-    var mvDir = path.join(process.cwd(), jrmuiName, '/');
+    var mvDir = path.join(process.cwd(), jrmuiName, '/src');
     logger.log('mvDir:', mvDir);
 
     if (!fs.existsSync(mvDir)) {
       shelljs.mkdir('-p', mvDir);
     }
 
-    shelljs.cp('-Rf', path.join(jrmuiPath, 'src', '/'), mvDir);
+    shelljs.cp('-Rf', path.join(jrmuiPath, 'src', '/scripts'), mvDir);
+    shelljs.cp('-Rf', path.join(jrmuiPath, 'src', '/scss'), mvDir);
+    shelljs.cp('-Rf', path.join(jrmuiPath, 'src', '/images/ui'), path.join(process.cwd(), 'src/images/'));
 
     logger.success('移动成功\n');
   }
