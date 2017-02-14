@@ -35,7 +35,7 @@ if (config.compass !== false) {
   };
 
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_COMMAND === 'build') {
     compassConfig.environment = 'production';
   } else {
     compassConfig.comments = true;

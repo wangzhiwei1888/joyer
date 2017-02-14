@@ -5,17 +5,17 @@ if (!config.tasks.js) return
 var path = require('path')
 var webpack = require('webpack')
 var webpackManifest = require('./webpackManifest')
-  // var utils = require('./utils')
+// var utils = require('./utils')
 
-module.exports = function(env) {
+module.exports = function (env) {  
   var jsSrc = path.resolve(process.env.CWD_PATH, config.root.src, config.tasks.js.src);
   var jsDest = path.resolve(process.env.CWD_PATH, config.root.dest, config.tasks.js.dest);
   var publicPath = path.join(config.tasks.js.src, '/');
   var rev = config.tasks.production.rev && env === 'production';
   var filenamePattern = rev ? '[name]-[hash].js' : '[name].js'
-  var extensions = config.tasks.js.extensions.map(function(extension) {
+  var extensions = config.tasks.js.extensions.map(function (extension) {
     return '.' + extension
-  })
+  })  
 
   var webpackConfig = {
     context: jsSrc,
@@ -32,7 +32,12 @@ module.exports = function(env) {
         test: /\.js$/,
         // include: process.env.CWD_PATH,
         loader: 'babel-loader',
-        exclude: /node_modules/,
+        // exclude: /(node_modules)/,
+        include: [
+          // 只去解析运行目录下的 src 和 demo 文件夹
+          path.resolve(process.env.CWD_PATH, config.root.src),
+          path.resolve(process.env.CWD_PATH, 'jrmui')          
+        ],
         query: config.tasks.js.babel
       }, {
         test: /\.html$/,
