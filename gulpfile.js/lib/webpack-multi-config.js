@@ -32,7 +32,7 @@ module.exports = function (env) {
         test: /\.js$/,
         // include: process.env.CWD_PATH,
         loader: 'babel-loader',
-        // exclude: /(node_modules)/,
+        exclude: /(node_modules)/,
         include: [
           // 只去解析运行目录下的 src 和 demo 文件夹
           path.resolve(process.env.CWD_PATH, config.root.src),
