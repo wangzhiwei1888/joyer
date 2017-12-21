@@ -2,7 +2,12 @@
 
 ### 安装
 
-`npm install -g joyer`
+```
+sudo npm install gulp -g
+compass必须sudo安装
+sudo gem install compass
+npm install -g joyer
+```
 
 `joyer -V`
 
